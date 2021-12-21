@@ -1,0 +1,42 @@
+UC-1 :- 
+	-> CREATE DATABASE payroll_service;
+	-> show databases;
+	-> use payroll_service;
+--------------------------------------------------------------------------------------------------------------------------------
+UC-2 :- 
+	-> CREATE TABLE employee_payroll(ID int PRIMARY KEY AUTO_INCREMENT , Name varchar(50) , Salary int , Start_date DATE); 	
+
+--------------------------------------------------------------------------------------------------------------------------------
+UC-3 :- 
+	-> INSERT INTO employee_payroll VALUES(1 , 'NIKHIL SUNDARASETTY' , 35000 , '2021-12-20');
+	-> INSERT INTO employee_payroll VALUES(2 , 'BILL GATES' , 500000 , '1999-1-1');
+	-> INSERT INTO employee_payroll VALUES(3 , 'ELON MUSK' , 600000 , '2000-10-30');
+
+--------------------------------------------------------------------------------------------------------------------------------
+UC-4 :- 
+	-> SELECT * FROM employee_payroll;
+
+--------------------------------------------------------------------------------------------------------------------------------
+UC-5 :- 
+	-> SELECT Salary FROM employee_payroll WHERE Name = 'ELON MUSK';
+	-> SELECT Salary FROM employee_payroll WHERE Start_date BETWEEN CAST('2000-01-01' AS DATE) AND DATE(NOW());
+
+--------------------------------------------------------------------------------------------------------------------------------
+UC-6 :- 
+	-> ALTER TABLE employee_payroll ADD COLUMN Gender CHAR(1);
+	-> UPDATE employee_payroll set Gender = 'M' WHERE Name = 'NIKHIL SUNDARASETTY' or Name = 'BILL GATES';
+	-> UPDATE employee_payroll set Gender = 'M' WHERE Name = 'ELON MUSK';
+
+--------------------------------------------------------------------------------------------------------------------------------
+UC-7 :- 
+	-> SELECT SUM(Salary) FROM employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+	-> SELECT ID , Name , AVG(Salary) FROM employee_payroll GROUP BY Gender;
+	-> SELECT MIN(Salary) FROM employee_payroll WHERE Gender = 'M' GROUP BY Gender;
+	-> SELECT ID , Name , MAX(Salary) FROM employee_payroll GROUP BY Gender;
+	-> SELECT Gender , COUNT(Gender) FROM employee_payroll GROUP BY GENDER;
+	-> SELECT Name , COUNT(Name) FROM employee_payroll GROUP BY GENDER;
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+	
